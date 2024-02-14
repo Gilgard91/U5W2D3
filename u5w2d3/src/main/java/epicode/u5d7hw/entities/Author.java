@@ -23,6 +23,7 @@ public class Author {
     private String dateOfBirth;
     private String avatar;
 
+
     @OneToMany(mappedBy = "author")
     private List<Blogpost> blogposts = new ArrayList<>();
 }

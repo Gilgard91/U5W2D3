@@ -1,6 +1,7 @@
 package epicode.u5d7hw.controllers;
 
 import epicode.u5d7hw.entities.Blogpost;
+import epicode.u5d7hw.payloads.NewBlogPostPayload;
 import epicode.u5d7hw.services.BlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,7 @@ public class BlogsController {
     // 1. - POST http://localhost:3001/blogs (+ req.body)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // <-- 201
-    public Blogpost saveBlog(@RequestBody Blogpost body) {
+    public Blogpost saveBlog(@RequestBody NewBlogPostPayload body) {
         return blogsService.save(body);
     }
 
@@ -38,7 +39,7 @@ public class BlogsController {
 
     // 4. - PUT http://localhost:3001/blogs/{id} (+ req.body)
     @PutMapping("/{blogId}")
-    public Blogpost findAndUpdate(@PathVariable int blogId, @RequestBody Blogpost body) {
+    public Blogpost findAndUpdate(@PathVariable int blogId, @RequestBody NewBlogPostPayload body) {
         return blogsService.findByIdAndUpdate(blogId, body);
     }
 
